@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans&display=swap");
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px;
+  font-family: "DM Sans";
+}
+
+.reset-info {
+  width: 100%;
+  margin: 75px;
+  text-align: center;
+}
+.reset-info svg {
+  transform: translate(0, 5px);
+}
+
+@keyframes blob-in {
+  from, to {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.95);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(0.99);
+  }
+  80% {
+    transform: scale(1.01);
+  }
+}
+@keyframes progress {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes horizontal-dash {
+  to {
+    width: 30%;
+    transform: translate(-100%, 100%) rotate(40deg);
+  }
+}
+@keyframes vertical-dash {
+  to {
+    transform: translate(-30%, -125%) rotate(-50deg);
+  }
+}
+.btn-complete .btn-complete__border, .btn-complete .btn-complete__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: visible;
+  box-shadow: 0px -0px 10000px transparent;
+  transform: rotate(-90deg);
+}
+
+.btn-complete .btn-complete__border circle, .btn-complete .btn-complete__progress circle {
+  cx: 50%;
+  cy: 50%;
+  r: calc(50% + 2px);
+  stroke-width: 5px;
+  fill: transparent;
+}
+
+.btn-complete {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  outline: 0 !important;
+  cursor: pointer;
+}
+.btn-complete .btn-complete__border circle {
+  stroke: #626262;
+  transition: all .25s ease-in-out;
+}
+.btn-complete .btn-complete__progress circle {
+  stroke: #8ab1cf;
+  stroke-dasharray: calc((50% + 2px) * 6.28318530718);
+  stroke-dashoffset: calc((50% + 2px) * 6.28318530718);
+}
+.btn-complete .btn-complete__content span {
+  position: absolute;
+  width: 50%;
+  height: 4%;
+  background: #3f729b;
+}
+.btn-complete .btn-complete__content span:nth-child(1) {
+  transform: translate(-50%);
+}
+.btn-complete .btn-complete__content span:nth-child(2) {
+  transform: translate(-50%) rotate(90deg);
+}
+.btn-complete:hover {
+  animation: blob-in .75s ease-in;
+}
+.btn-complete:hover .btn-complete__border circle {
+  stroke: #3f729b;
+}
+.btn-complete:focus {
+  animation: none;
+}
+.btn-complete:focus .btn-complete__border circle {
+  stroke: #3f729b;
+}
+.btn-complete:focus .btn-complete__progress circle {
+  animation: progress 1.75s cubic-bezier(0.75, 0, 0.5, 1) forwards;
+}
+.btn-complete:focus .btn-complete__content span:nth-child(1) {
+  animation: horizontal-dash 1s forwards 1s;
+}
+.btn-complete:focus .btn-complete__content span:nth-child(2) {
+  animation: vertical-dash 1s forwards 1s;
+}
